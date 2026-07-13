@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lebensführerschein | Komitee H36</title>
+<meta name="description" content="Der Lebensführerschein ist ein Projekt des Komitee H36 für Jugendliche in Deutschland." />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Lebensführerschein | Komitee H36" />
+<meta property="og:description" content="Wir wollen junge Menschen in Deutschland dabei unterstützen, die Grundkompetenzen für ein selbstbestimmtes Leben im Umgang mit sich selbst, Beruf, Geld und digitaler Welt zu erwerben." />
+<meta property="og:url" content="https://h36.group/lebensfuehrerschein" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+        :root {
+  --bg: #ffffff;
+  --bg-soft: #f5f3f4;
+  --paper: #fafafa;
+  --ink: #1a1a1a;
+  --ink-2: #494649;
+  --muted: #8a868a;
+  --line: #e6e2e4;
+  --line-soft: #efedee;
+  --line-strong: #c4bdc1;
+  --accent: #a8245a;
+  --accent-soft: #c84a82;
+  --accent-ink: #fff;
+  --max: 1180px;
+  --gutter: clamp(20px, 4vw, 56px);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--accent); }
+
+p { margin: 0 0 1em; }
+
+em { font-style: italic; }
+strong { font-weight: 600; }
+
+/* ---------- Topbar ---------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px var(--gutter);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.wordmark {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  text-decoration: none;
+}
+.wordmark .long {
+  font-family: "Manrope", "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+}
+.topbar nav {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+.topbar nav a { color: var(--ink-2); transition: color 0.2s; }
+.topbar nav a:hover { color: var(--ink); }
+.topbar nav a.primary {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+.topbar nav a.primary:hover { background: var(--accent); color: #fff; }
+
+/* ---------- Layout primitives ---------- */
+main { display: block; }
+
+.section {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(48px, 6vw, 88px) var(--gutter);
+  border-top: 1px solid var(--line-soft);
+}
+
+.kicker {
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  font-weight: 500;
+  margin: 0 0 20px;
+}
+
+h1, h2, h3 {
+  font-family: "Manrope", "Inter", sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0;
+}
+
+h2 {
+  font-size: clamp(32px, 3.8vw, 48px);
+  line-height: 1.05;
+  max-width: 22ch;
+  margin: 0 0 32px;
+}
+
+h3 {
+  font-size: clamp(22px, 2.4vw, 28px);
+  line-height: 1.2;
+  margin: 0 0 14px;
+  font-weight: 500;
+}
+
+.prose {
+  max-width: 64ch;
+  font-size: 18px;
+  color: var(--ink-2);
+}
+.prose p { margin: 0 0 1.1em; }
+.prose .highlight {
+  font-family: "Manrope", "Inter", sans-serif;
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-top: 32px;
+}
+.prose .highlight em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.prose.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 80px);
+  max-width: none;
+}
+.prose.two-col h3 { margin-top: 28px; }
+.prose.two-col h3:first-child { margin-top: 0; }
+
+/* ---------- Hero ---------- */
+.hero {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(40px, 6vw, 72px) var(--gutter) clamp(56px, 7vw, 88px);
+}
+.hero h1 {
+  font-size: clamp(38px, 5.2vw, 72px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  font-weight: 400;
+  max-width: 22ch;
+  margin: 0 0 28px;
+}
+.hero h1 em {
+  color: var(--accent);
+  font-style: italic;
+  font-weight: 400;
+}
+.hero .lede {
+  font-size: clamp(18px, 1.5vw, 21px);
+  line-height: 1.45;
+  color: var(--ink-2);
+  max-width: 56ch;
+  margin: 0 0 32px;
+}
+
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 22px;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 500;
+  font-size: 15px;
+  border-radius: 999px;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+.btn:hover { background: var(--accent); color: #fff; transform: translateY(-1px); }
+.btn.large {
+  padding: 18px 30px;
+  font-size: 16px;
+}
+
+/* ---------- Quote box ---------- */
+.quote-box {
+  font-family: "Manrope", "Inter", sans-serif;
+  font-size: 19px;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  margin-top: 32px !important;
+  margin-left: 40px;
+  padding-left: 16px;
+  border-left: 2px solid var(--accent);
+}
+
+/* ---------- Contact box ---------- */
+.contact-box {
+  background: var(--ink);
+  padding: 48px 56px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.contact-box h3 {
+  color: var(--paper);
+  font-family: 'Manrope', sans-serif;
+  font-size: 20px;
+  margin: 0;
+  flex: 1;
+  min-width: 280px;
+}
+.contact-box .btn {
+  flex-shrink: 0;
+}
+
+/* ---------- Cards grid ---------- */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+@media (min-width: 901px) {
+  #saeulen .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 32px;
+}
+.card h4 {
+  font-family: "Manrope", "Inter", sans-serif;
+  font-size: clamp(20px, 2.2vw, 26px);
+  letter-spacing: -0.01em;
+  margin: 0 0 12px;
+  color: var(--ink);
+}
+.card p {
+  font-size: 15px;
+  color: var(--ink-2);
+  margin: 0 0 8px;
+}
+
+.card.accent {
+  background: var(--bg);
+  border: 1px solid var(--accent);
+}
+.card.accent h4 {
+  color: var(--accent);
+}
+
+/* Hover effects */
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+a:hover {
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+.card:hover {
+  border-color: var(--line-strong);
+  transition: border-color 0.2s ease;
+}
+.card.accent:hover {
+  border-color: var(--accent-soft);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  transform: translateY(-2px);
+}
+
+.list-item:hover {
+  background: var(--bg-soft);
+  transition: background 0.2s ease;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--bg-soft);
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-2);
+  margin-right: 6px;
+  margin-bottom: 6px;
+}
+
+/* ---------- Stats ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 40px;
+  margin-top: 48px;
+}
+.stat {
+  text-align: center;
+}
+.stat .number {
+  font-family: "Manrope", "Inter", sans-serif;
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat .label {
+  font-size: 14px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.stat .desc {
+  font-size: 0.875rem;
+  color: var(--ink-2);
+  margin: 10px 0 6px;
+}
+
+.source,
+p.source,
+.card p.source,
+span.source {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+
+.card .big-stat {
+  font-family: "Manrope", "Inter", sans-serif;
+  font-size: clamp(36px, 4vw, 44px);
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  margin: 6px 0 10px;
+}
+
+/* ---------- Diagram ---------- */
+.diagram-wrap {
+  margin-top: 48px;
+  max-width: 760px;
+}
+.diagram-wrap svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 700px) {
+  .diagram-wrap svg {
+    min-width: 640px;
+  }
+  .diagram-wrap {
+    overflow-x: auto;
+  }
+}
+
+/* ---------- Dark section ---------- */
+.dark-section {
+  background: var(--bg);
+  color: var(--ink);
+  padding: clamp(48px, 6vw, 88px) var(--gutter);
+  margin: 0 auto;
+  max-width: var(--max);
+  border-top: 1px solid var(--line-soft);
+}
+.dark-section .kicker { color: var(--accent); }
+.dark-section h2 { color: var(--ink); }
+.dark-section p { color: var(--ink-2); }
+.dark-section .stat .number { color: var(--accent); }
+.dark-section .stat .label { color: var(--muted); }
+
+/* ---------- List items ---------- */
+.list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 24px 0;
+  border-top: 1px solid var(--line-soft);
+}
+.list-item .number {
+  font-family: "Manrope", "Inter", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--accent);
+  min-width: 40px;
+  margin-left: 8px;
+}
+.list-item h4 {
+  font-family: "Manrope", "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 8px;
+  color: var(--accent);
+}
+.list-item p {
+  font-size: 16px;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+/* ---------- Timeline ---------- */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+.timeline li {
+  text-align: center;
+  position: relative;
+}
+.timeline .number {
+  width: 48px;
+  height: 48px;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Manrope", "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 auto 16px;
+}
+.timeline h4 {
+  font-family: "Manrope", "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  color: var(--ink);
+}
+
+/* ---------- CTA section ---------- */
+.cta-section {
+  background: var(--bg-soft);
+  border-radius: 10px;
+  padding: clamp(48px, 6vw, 80px) clamp(28px, 4vw, 56px);
+  text-align: center;
+  max-width: calc(var(--max) - 2 * var(--gutter));
+  margin: 0 auto;
+}
+.cta-section h2 { max-width: none; }
+.cta-section p { max-width: 56ch; margin: 0 auto 32px; }
+
+/* ---------- Footer ---------- */
+footer {
+  border-top: 1px solid var(--line);
+  margin-top: 32px;
+  padding: 40px var(--gutter) 28px;
+  max-width: var(--max);
+  margin-left: auto;
+  margin-right: auto;
+}
+.foot-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 40px;
+}
+.foot-mark {
+  font-family: "Manrope", "Inter", sans-serif;
+  font-size: 24px;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+.foot-brand p:last-child { color: var(--muted); margin: 0; }
+.foot-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  margin: 0 0 10px;
+  font-weight: 500;
+}
+.foot-meta p { margin: 0 0 4px; color: var(--ink-2); font-size: 15px; }
+.foot-meta a { color: var(--accent); }
+
+.foot-bottom {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 22px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.foot-bottom p { margin: 0; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .topbar nav { gap: 16px; }
+  .topbar nav a:not(.primary) { display: none; }
+
+  .cards-grid,
+  .prose.two-col {
+    grid-template-columns: 1fr;
+  }
+  .foot-top { grid-template-columns: 1fr; gap: 32px; }
+}
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .timeline { grid-template-columns: 1fr; }
+  .contact-box {
+    padding: 32px 24px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .contact-box h3 {
+    font-size: 20px;
+    min-width: auto;
+    margin-bottom: 16px;
+  }
+  .contact-box .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+    </style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="wordmark" href="#top">
+    <span class="long">H36 <span style="font-style: italic; color: var(--accent);">Lebensführerschein</span></span>
+  </a>
+  <nav>
+    <a href="#warum-jetzt">Warum jetzt</a>
+    <a href="#programm">Programm</a>
+    <a href="#saeulen">Die vier Säulen</a>
+    <a href="#vision">Vision</a>
+    <a href="#zielgruppe">Zielgruppe</a>
+    <a href="#kontakt" class="primary">Kontakt</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <h1>
+    Der <em>Lebensführerschein</em> für Jugendliche in <em>Deutschland</em>
+  </h1>
+  <p class="lede">
+  Horizont 2036 möchte junge Menschen in Deutschland dabei unterstützen, die Grundkompetenzen für ein selbstbestimmtes Leben im Umgang mit sich selbst, Beruf, Geld und digitaler Welt zu erwerben. Chancengleichheit, Demokratie und wirtschaftliche Teilhabe sollen nicht vom Zufall abhängen.
+</p>
+<p class="lede">
+  Das Projekt richtet sich an junge Menschen zwischen 16 und 20 Jahren im Übergang zwischen Schule und Ausbildung, Studium oder Beruf.
+</p>
+  <div class="hero-actions">
+    <a href="#kontakt" class="btn">Mitwirken</a>
+  </div>
+</section>
+
+    <section id="warum-jetzt" class="section">
+  <p class="kicker">01 · Warum jetzt</p>
+  <h2>Erwachsenwerden war selten so anspruchsvoll</h2>
+  <div class="prose">
+    <p>
+      Die Zahlen zeigen deutlich: Junge Menschen stehen heute vor beruflichen, finanziellen, digitalen und mentalen Übergängen, auf die sie sich schlechter vorbereitet fühlen als je zuvor.
+    </p>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="number">29&nbsp;%</div>
+      <div class="label">Mentale Gesundheit</div>
+      <p class="desc">der jungen Menschen benötigen psychologische Unterstützung, ein neuer Höchstwert. 60&nbsp;Prozent zeigen zudem eine suchtähnliche Smartphonenutzung.</p>
+      <p class="source">Universität Potsdam, Jugend in Deutschland, 2026</p>
+    </div>
+    <div class="stat">
+      <div class="number">40&nbsp;%</div>
+      <div class="label">Berufsorientierung</div>
+      <p class="desc">der Jugendlichen im Alter von 15 Jahren haben keine realistische Berufsvorstellung, doppelt so viele wie vor zehn Jahren.</p>
+      <p class="source">OECD, PISA 2022 (2024)</p>
+    </div>
+    <div class="stat">
+      <div class="number">48&nbsp;%</div>
+      <div class="label">Finanzwissen</div>
+      <p class="desc">der Jugendlichen wissen nicht, wozu man ein Girokonto benötigt; mehr als die Hälfte kennt ihre Rechte als Käufer:innen nicht.</p>
+      <p class="source">vzbv/mmb Institut, 2024</p>
+    </div>
+    <div class="stat">
+      <div class="number">1,5&nbsp;Mio</div>
+      <div class="label">Mediensucht</div>
+      <p class="desc">Kinder und Jugendliche zwischen 10 und 17 Jahren zeigen problematische Nutzungsmuster in sozialen Medien, das betrifft mehr als jedes vierte Kind.</p>
+      <p class="source">DAK, Studie zur Mediensucht, 2024</p>
+    </div>
+  </div>
+</section>
+
+    <section id="idee" class="section">
+  <p class="kicker">02 · Unsere Idee</p>
+  <h2>Erst das Fundament, dann der Rest</h2>
+  <div class="prose">
+    <p>
+      Ohne ein Fundament an Alltagskompetenzen verschärfen neue Bildungsangebote die Ungleichheit sogar, denn digitale und finanzielle Chancen sind schon heute sozial ungleich verteilt.
+    </p>
+    <p>
+      Selbst unter Personen mit hoher Bildung verfügen nur 64&nbsp;Prozent über digitale Basiskompetenzen, bei niedriger Bildung sind es 29&nbsp;Prozent. Solange die digitale und finanzielle Grundausstattung ungleich verteilt ist, wird die Kluft verstärkt statt geschlossen.
+    </p>
+    <p class="source">Initiative D21, 2025</p>
+    <p class="quote-box">
+      „Der Digital Skills Gap ist strukturell, nicht individuell.“<br>
+      <span class="source">Initiative D21, 2025</span>
+    </p>
+  </div>
+</section>
+
+    <section id="programm" class="section">
+  <p class="kicker">03 · Das Programm</p>
+  <h2>Druck von allen Seiten?<br>Unser Programm fängt auf.</h2>
+  <div class="prose">
+    <p>
+      Karriereentscheidung, Geld, Elternerwartung, Alltag, Selbstfindung und Wohnungssuche treffen gemeinsam mit gesellschaftlichem Anspruch und digitaler Verunsicherung auf junge Menschen. Diese Fragen stellen sich häufig gleichzeitig und können leicht überfordern. Mit dem Lebensführerschein wollen wir sie gebündelt beantworten können.
+    </p>
+  </div>
+
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 880 620" role="img" aria-label="Diagramm: Die gesellschaftlichen Druckformen Digitalität und Verunsicherung sowie Gesellschaftlicher Anspruch treffen von oben auf Unser Programm. Von dort aus werden sechs konkrete Themen sortiert: Karriereentscheidung, Geld & Finanzen, Elternerwartung, Alltag & Job, Selbstfindung, Wohnungssuche.">
+      <defs>
+        <marker id="prog-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="var(--accent)" />
+        </marker>
+      </defs>
+
+      <!-- Druck von außen: konvergiert von oben -->
+      <line x1="150" y1="132" x2="264" y2="276" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#prog-arrow)" />
+      <line x1="410" y1="122" x2="297" y2="276" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#prog-arrow)" />
+
+      <g font-family="Manrope, Inter, sans-serif" font-size="16" font-weight="600" fill="var(--ink)">
+        <text x="150" y="94" text-anchor="middle">
+          <tspan x="150" dy="0">Digitalität und</tspan>
+          <tspan x="150" dy="20">Verunsicherung</tspan>
+        </text>
+        <text x="410" y="94" text-anchor="middle">
+          <tspan x="410" dy="0">Gesellschaftlicher</tspan>
+          <tspan x="410" dy="20">Anspruch</tspan>
+        </text>
+      </g>
+
+      <!-- Unser Programm: Figur -->
+      <circle cx="280" cy="296" r="26" fill="var(--accent)" />
+      <path d="M234 420 Q234 344 280 344 Q326 344 326 420 Z" fill="var(--accent)" />
+      <text x="280" y="470" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" letter-spacing="0.12em" fill="var(--accent)">UNSER PROGRAMM</text>
+
+      <!-- Fragen auf einmal: sechs Themen, sortiert -->
+      <line x1="330" y1="340" x2="620" y2="150" stroke="var(--line-strong)" stroke-width="1.5" />
+      <line x1="330" y1="340" x2="620" y2="226" stroke="var(--line-strong)" stroke-width="1.5" />
+      <line x1="330" y1="340" x2="620" y2="302" stroke="var(--line-strong)" stroke-width="1.5" />
+      <line x1="330" y1="340" x2="620" y2="378" stroke="var(--line-strong)" stroke-width="1.5" />
+      <line x1="330" y1="340" x2="620" y2="454" stroke="var(--line-strong)" stroke-width="1.5" />
+      <line x1="330" y1="340" x2="620" y2="530" stroke="var(--line-strong)" stroke-width="1.5" />
+
+      <circle cx="620" cy="150" r="4" fill="var(--accent)" />
+      <circle cx="620" cy="226" r="4" fill="var(--accent)" />
+      <circle cx="620" cy="302" r="4" fill="var(--accent)" />
+      <circle cx="620" cy="378" r="4" fill="var(--accent)" />
+      <circle cx="620" cy="454" r="4" fill="var(--accent)" />
+      <circle cx="620" cy="530" r="4" fill="var(--accent)" />
+
+      <rect x="636" y="135" width="180" height="30" rx="15" fill="var(--bg-soft)" stroke="var(--line)" stroke-width="1" />
+      <rect x="636" y="211" width="145" height="30" rx="15" fill="var(--bg-soft)" stroke="var(--line)" stroke-width="1" />
+      <rect x="636" y="287" width="145" height="30" rx="15" fill="var(--bg-soft)" stroke="var(--line)" stroke-width="1" />
+      <rect x="636" y="363" width="120" height="30" rx="15" fill="var(--bg-soft)" stroke="var(--line)" stroke-width="1" />
+      <rect x="636" y="439" width="130" height="30" rx="15" fill="var(--bg-soft)" stroke="var(--line)" stroke-width="1" />
+      <rect x="636" y="515" width="130" height="30" rx="15" fill="var(--bg-soft)" stroke="var(--line)" stroke-width="1" />
+
+      <g font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="var(--ink-2)" text-anchor="middle">
+        <text x="726" y="155">Karriereentscheidung</text>
+        <text x="708.5" y="231">Geld &amp; Finanzen</text>
+        <text x="708.5" y="307">Elternerwartung</text>
+        <text x="696" y="383">Alltag &amp; Job</text>
+        <text x="701" y="459">Selbstfindung</text>
+        <text x="701" y="535">Wohnungssuche</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+    <section id="saeulen" class="section">
+  <p class="kicker">04 · Die vier Säulen</p>
+  <h2>Vier Säulen, ein Fundament</h2>
+  <div class="prose">
+    <p>
+      Jede Säule beantwortet eine der drängenden Fragen, die sich junge Menschen stellen und die bisher unbeantwortet bleibt.
+    </p>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card accent">
+      <h4>Mensch &amp; mentale Stärke</h4>
+      <p class="big-stat">23&nbsp;%</p>
+      <p>der Kinder und Jugendlichen zeigten im Herbst 2024 Angstsymptome, das liegt rund 5&nbsp;Prozentpunkte über dem Niveau aus der Zeit vor Corona.</p>
+      <p class="source">UKE, COPSY, 2024</p>
+      <p>84&nbsp;Prozent der Schulkinder haben keine ausreichende Gesundheitskompetenz.</p>
+      <p class="source">Präventionsradar der DAK, 2025</p>
+    </div>
+    <div class="card accent">
+      <h4>Arbeit &amp; Zukunft</h4>
+      <p class="big-stat">43&nbsp;%</p>
+      <p>der jungen Menschen mit hoher Schulbildung fühlen sich über Ausbildungsberufe von der Schule nicht gut informiert.</p>
+      <p class="source">Bertelsmann Stiftung, 2024</p>
+      <p>Junge Menschen verlassen das Elternhaus im Schnitt erst mit 23,9 Jahren. 30&nbsp;Prozent der 25 Jahre alten jungen Menschen leben noch bei den Eltern, oft aus finanziellen Gründen.</p>
+      <p class="source">Eurostat/Destatis, via IFFUN, 2024</p>
+    </div>
+    <div class="card accent">
+      <h4>Geld &amp; Existenz</h4>
+      <p class="big-stat">92&nbsp;%</p>
+      <p>wünschen sich Unterricht zu Geld und Versicherungen; 81&nbsp;Prozent finden, der Umgang mit Geld werde bisher nicht ausreichend vermittelt.</p>
+      <p class="source">vzbv/Forsa, 2023</p>
+      <p>73&nbsp;Prozent der jungen Menschen fürchten, keine bezahlbare Wohnung zu finden.</p>
+      <p class="source">Vodafone Stiftung, 2023</p>
+    </div>
+    <div class="card accent">
+      <h4>Digitale Welt &amp; KI</h4>
+      <p class="big-stat">40&nbsp;%</p>
+      <p>der Achtklässler:innen erreichen nur unzureichende digitale Kompetenzen; der Mittelwert fiel von 518 (2018) auf 502 Punkte (2023).</p>
+      <p class="source">IEA, ICILS 2023 (2024)</p>
+      <p>84&nbsp;Prozent wünschen sich Quellenprüfung und Umgang mit Fake News, doch nur 55&nbsp;Prozent erhalten dazu Unterricht.</p>
+      <p class="source">Bitkom Research, 2025</p>
+    </div>
+  </div>
+</section>
+
+    <section id="unterschied" class="section">
+  <p class="kicker">05 · Was uns unterscheidet</p>
+  <h2>Ein zusammenhängender Weg statt vieler Einzelangebote</h2>
+  <div class="prose">
+    <p>
+      Zu jedem Einzelthema gibt es bereits Angebote, jedoch keinen zusammenhängenden Weg. Wir schaffen den One-Stop Shop für Zukunftssicherheit.
+    </p>
+    <p class="quote-box">
+      „Schülerinnen und Schüler müssen lernen, selbstständig durch für sie unbekanntes Terrain zu navigieren und ihren eigenen Weg auf sinnvolle und verantwortungsbewusste Weise zu finden.“<br>
+      <span class="source">OECD, Lernkompass 2030, 2019</span>
+    </p>
+  </div>
+</section>
+
+    <section id="vision" class="section">
+  <p class="kicker">06 · Vision 2036</p>
+  <h2>Lebenskompetenz als Standard: 2036</h2>
+  <div class="prose">
+    <p>
+      Bei allem Wissen und den Möglichkeiten, die zur Verfügung stehen, soll der Lebensführerschein elementarer Teil des Aufwachsens in Deutschland sein.
+    </p>
+    <p>
+      Unsere Vision: Junge Menschen verfügen über ein fundiertes Verständnis für ihre eigene mentale Stärke, für Beruf und Zukunftsentscheidungen, für Geld und Existenzsicherung sowie für die digitale Welt einschließlich KI. Sie sind in der Lage, Entscheidungen selbstbestimmt zu treffen, Chancen zu nutzen und Risiken reflektiert einzuordnen.
+    </p>
+    <p>
+      Dabei entwickeln sie ein ausgeprägtes Bewusstsein für ihre eigene Handlungsfähigkeit, für Datenschutz und Transparenz im digitalen Raum, für finanzielle Zusammenhänge und für einen reflektierten Umgang mit gesellschaftlichem Druck. Sie sind fähig, ihre Lebenswege nicht nur zu bewältigen, sondern aktiv und mündig mitzugestalten.
+    </p>
+
+    <p>
+      Lehrkräfte und Begleitpersonen unterstützen diesen Prozess kompetent, reflektiert und mit Offenheit für die sich wandelnden Lebensrealitäten junger Menschen.
+    </p>
+  </div>
+</section>
+
+    <section id="ausgangspunkt" class="section">
+  <p class="kicker">07 · Ausgangspunkt</p>
+  <h2>Drei Dimensionen des Projekts</h2>
+  <div class="prose">
+    <p>
+      Mit dem Projekt möchten wir eine digitale, universell zugängliche praxisnahe Kompetenzvermittlung sicherstellen.
+    </p>
+    <p>
+      Seine besondere Stärke liegt darin, unterschiedliche Ebenen wirksam zusammenzuführen: fundierte Inhalte zu mentaler Stärke, Beruf, Geld und digitaler Welt, tragfähige Ökosysteme und Partnerschaften, gesellschaftliche Teilhabe sowie die konkrete Arbeit mit jungen Menschen.
+    </p>
+  </div>
+
+  <div class="list-item">
+    <div class="number">1</div>
+    <div>
+      <h4>Grundlage</h4>
+      <p>Ökosysteme & Partnerschaften</p>
+    </div>
+  </div>
+  <div class="list-item">
+    <div class="number">2</div>
+    <div>
+      <h4>Wirkung</h4>
+      <p>Chancengleichheit, Demokratie & Teilhabe</p>
+    </div>
+  </div>
+  <div class="list-item">
+    <div class="number">3</div>
+    <div>
+      <h4>Umsetzung</h4>
+      <p>Direkter Kontakt & Rollout</p>
+    </div>
+  </div>
+</section>
+
+    <section id="zielgruppe" class="dark-section">
+  <p class="kicker">08 · Zielgruppe</p>
+  <h2>Zielgruppe</h2>
+  <div class="prose">
+    <p>
+      Das Projekt richtet sich an junge Menschen im Alter von 16 bis 20 Jahren und setzt gezielt in der Übergangsphase zwischen Schule und Ausbildung, Studium oder Beruf an, wo der Bedarf an Lebenskompetenz besonders hoch ist.
+    </p>
+    <p>
+      Im Fokus steht dieser Übergang selbst, denn hier treffen junge Menschen zentrale Weichenstellungen, oft ohne ausreichende Vorbereitung.
+    </p>
+    <p>
+      Besondere Aufmerksamkeit gilt Jugendlichen, die bislang nur eingeschränkten Zugang zu Technologie, digitalen Lernangeboten oder sprachlicher Unterstützung haben.
+    </p>
+    <p>
+      Mit dem Programm möchten wir unterschiedliche Ausgangslagen berücksichtigen und es so gestalten, dass Inhalte für mehrere Zielgruppen relevant sind.
+    </p>
+  </div>
+  
+  <div class="stats">
+    <div class="stat">
+      <div class="number" style="font-size: clamp(32px, 4.2vw, 48px);">16 bis 20</div>
+      <div class="label">Jahre</div>
+      <p style="font-size: 0.875rem; color: var(--ink-2); margin-top: 8px;">Junge Menschen im Übergang zwischen Schule und Ausbildung, Studium oder Beruf</p>
+    </div>
+    <div class="stat">
+      <div class="number">3</div>
+      <div class="label">Übergänge</div>
+      <p style="font-size: 0.875rem; color: var(--ink-2); margin-top: 8px;">Ausbildung, Studium und Berufseinstieg gleichermaßen im Blick</p>
+    </div>
+    <div class="stat">
+      <div class="number">DE</div>
+      <div class="label">Reichweite</div>
+      <p style="font-size: 0.875rem; color: var(--ink-2); margin-top: 8px;">Skalierbarer Ansatz für unterschiedliche regionale und soziale Kontexte</p>
+    </div>
+  </div>
+</section>
+
+    <section id="settings" class="section">
+  <p class="kicker">09 · Settings und Kanäle</p>
+  <h2>Der wirksamste Zugang</h2>
+  <div class="prose">
+    <p>
+      Für die Umsetzung kommen verschiedene Formate infrage. Gemeinsam mit Partnern wird evaluiert, welcher Ansatz den größten Hebel für Reichweite, Qualität und nachhaltige Wirkung bietet.
+    </p>
+  </div>
+  
+  <div class="cards-grid">
+    <div class="card accent">
+      <h4>Im Unterricht</h4>
+      <p>Integration in bestehende schulische Strukturen und Curricula</p>
+    </div>
+    <div class="card accent">
+      <h4>Außerschulisch</h4>
+      <p>Workshops, Projektformate oder Lernorte außerhalb des Regelunterrichts</p>
+    </div>
+    <div class="card accent">
+      <h4>Digital</h4>
+      <p>Skalierbare Lernangebote, begleitende Materialien und hybride Formate</p>
+    </div>
+  </div>
+</section>
+
+    
+    <section id="kontakt" class="cta-section">
+  <p class="kicker" style="text-align: left; margin-left: -16px; margin-top: -24px;">10 · Kontakt</p>
+  <h2>Du bist Teil der Lösung.</h2>
+  
+  <div class="contact-box">
+    <h3>Unterstütze das Projekt mit Expertise, Netzwerk oder Ressourcen.</h3>
+    <a href="https://app.notion.com/p/331fa24be1da80daa3abd4342a34f739?pvs=21&assetsVersion=23.13.20260608.0216" class="btn" style="background: var(--paper); color: var(--ink);">Anmeldeformular</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot-top">
+    <div class="foot-brand">
+      <p class="foot-mark">Komitee H36</p>
+      <p>Ein Kollektiv für Deutschlands Zukunft.</p>
+    </div>
+    <div class="foot-meta">
+      <p class="foot-label">Projekt</p>
+      <p>Lebensführerschein</p>
+    </div>
+    <div class="foot-meta">
+      <p class="foot-label">Kontakt</p>
+      <p><a href="mailto:kontakt@h36.group">kontakt@h36.group</a></p>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>
+      <a href="https://h36.group">h36.group</a> ·
+      <a href="#top">Nach oben ↑</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
